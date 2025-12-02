@@ -1,0 +1,5 @@
+# Exercício sobre pesquisa de dados
+
+Com base no projeto da agenda de aniversários, 
+faça com que a aplicação, ao abrir, mostre na Homepage os aniversariantes do dia.
+
