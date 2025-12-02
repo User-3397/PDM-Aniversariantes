@@ -157,19 +157,10 @@ class DatabaseHelper {
   //
   Future<int> delete(int id) async {
     Database db = await instance.database;
-    List<Map> maps = await db.query(
+    return await db.delete(
       table,
-      columns: [
-        columnId,
-        columnNome,
-        columnEmail,
-        columnTelefone,
-        columnAniversario,
-        columnCategoria,
-      ],
       where: '$columnId = ?',
       whereArgs: [id],
     );
-    return db.delete(table);
   }
 }
