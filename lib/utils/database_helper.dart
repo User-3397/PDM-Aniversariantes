@@ -154,7 +154,6 @@ class DatabaseHelper {
   }
 
   // D -----------------------------------------
-  //
   Future<int> delete(int id) async {
     Database db = await instance.database;
     return await db.delete(

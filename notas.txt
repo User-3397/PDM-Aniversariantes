@@ -1,0 +1,15 @@
+Abordagem do app:
+
+# Padrão Singleton
+A classe DatabaseHelper tem um construtor privado e uma instância estática (instance).
+
+# Camada de acesso a dados (DAO-like)
+A classe concentra toda a lógica de acesso ao banco: abrir, criar tabelas e executar operações CRUD.
+Isso é semelhante ao padrão DAO (Data Access Object), isolando o acesso ao banco do restante da aplicação.
+
+# Uso de sqflite + path_provider
+
+sqflite: fornece a API para manipular SQLite no Flutter.
+path_provider: usado para localizar o diretório adequado onde o banco deve ser salvo (documentos da aplicação).
+Essa combinação é padrão para persistência local em Flutter.
+
