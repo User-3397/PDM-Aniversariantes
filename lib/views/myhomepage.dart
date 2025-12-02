@@ -24,12 +24,7 @@ class _MyHomePageState extends State<MyHomePage> {
       drawer: _buildMenu(),
       appBar: AppBar(title: const Text("Aniversariantes de Hoje!")),
       body: Container(
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('lib/images/ruidos-01.jpg'), // Caminho da imagem
-            fit: BoxFit.cover, // Ajusta a imagem para cobrir toda a tela
-          ),
-        ),
+        decoration: _backgroundImage('lib/images/ruidos-01.jpg', BoxFit.cover),
         child: Center(
           child: FutureBuilder<List?>(
             future: _consultar(),
@@ -180,4 +175,28 @@ class _MyHomePageState extends State<MyHomePage> {
         resultado == true, /*modo debug: */ "Erro ao verificar aniversariante");
     return resultado;
   }
+
+  BoxDecoration _backgroundImage(String url, BoxFit fit) {
+    return new BoxDecoration(
+      image: DecorationImage(
+        image: AssetImage(url),
+        fit: fit, // Ajusta a imagem para cobrir toda a tela
+      ),
+    );
+  }
 }
+
+/* # Mapeamento Objeto-Relacional manual
+
+A entidade Pessoa é convertida para Map (toMap) ao inserir.
+E reconstruída a partir de Map (fromMap) ao consultar.
+
+Nota: Não há ORM completo, mas sim um mapeamento manual entre objetos Dart e registros SQLite.
+
+# Arquitetura: 
+- Abordagem imperativa e estruturada, típica de apps Flutter que usam SQLite diretamente:
+- Não é um ORM (como drift ou floor).
+- Não é reativo (não usa Stream ou ValueNotifier para mudanças automáticas).
+- É um Data Layer manual, onde o desenvolvedor controla cada query SQL e cada conversão de objeto.
+
+*/
